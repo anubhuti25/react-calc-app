@@ -5,7 +5,9 @@ function History({ dispatch, results }) {
   return (
     <div className="history-container">
       <div className="history-item">Results:</div>
-      <div></div>
+      <br />
+      <div>{!results || results?.length === 0 ? 'No records found.' : ''}</div>
+      
       {results
         ?.slice(0)
         ?.reverse()
