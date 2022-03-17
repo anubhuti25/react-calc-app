@@ -24,6 +24,7 @@ function App() {
   return (<>
     {user ? 
       <div className="container">
+      <nav>Calculator App</nav>
       <div className="calculator-grid">
         <div className="output">
           <div className="previous-operand">

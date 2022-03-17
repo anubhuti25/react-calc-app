@@ -42,15 +42,25 @@ export default function reducer(state, { type, payload }) {
             currentOperand: null,
           }
         }
+
+        const result = evaluate(state)
   
         return {
           ...state,
-          previousOperand: evaluate(state),
+          previousOperand: result,
+          results: [...(state.results || []), 
+          {
+            result: result, 
+            previousOperand: state.previousOperand,
+            operation: state.operation,
+            currentOperand: state.currentOperand
+
+          }],
           operation: payload.operation,
           currentOperand: null,
         }
       case ACTIONS.CLEAR:
-        return {}
+        return {user: state.user, results: [...(state.results|| [])]}
       case ACTIONS.DELETE_DIGIT:
         if (state.overwrite) {
           return {
